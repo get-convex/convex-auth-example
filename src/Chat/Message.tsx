@@ -3,7 +3,6 @@ import { ReactNode } from "react";
 import { Id } from "../../convex/_generated/dataModel";
 import { useMutation } from "convex/react";
 import { api } from "../../convex/_generated/api";
-import { error } from "console";
 
 export function Message({
   authorName,
