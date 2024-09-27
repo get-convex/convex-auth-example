@@ -1,18 +1,38 @@
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
 import { Id } from "../../convex/_generated/dataModel";
+import { useMutation } from "convex/react";
+import { api } from "../../convex/_generated/api";
 
 export function Message({
   authorName,
   author,
   viewer,
   children,
+  id,
 }: {
   authorName: string;
   author: Id<"users">;
   viewer: Id<"users">;
   children: ReactNode;
+  id: Id<"messages">;
 }) {
+  const deleteMessage = useMutation(api.messages.deleteMessage);
+
+  const handleClick = async () => {
+    try {
+      await deleteMessage({ id });
+    } catch (error) {
+      throw error instanceof Error ? error : new Error("can't delete");
+    }
+  };
+
+  const handleDoubleClick = () => {
+    handleClick()
+      .then(() => console.log("message deleted"))
+      .catch((error) => console.error(error));
+  };
+
   return (
     <li
       className={cn(
@@ -26,6 +46,7 @@ export function Message({
           "rounded-xl bg-muted px-3 py-2",
           author === viewer ? "rounded-tr-none" : "rounded-tl-none",
         )}
+        onDoubleClick={handleDoubleClick}
       >
         {children}
       </p>

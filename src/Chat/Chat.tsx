@@ -32,6 +32,7 @@ export function Chat({ viewer }: { viewer: Id<"users"> }) {
             author={message.userId}
             authorName={message.author}
             viewer={viewer}
+            id={message._id}
           >
             {message.body}
           </Message>

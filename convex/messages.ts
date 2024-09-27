@@ -32,3 +32,20 @@ export const send = mutation({
     await ctx.db.insert("messages", { body, userId });
   },
 });
+
+export const deleteMessage = mutation({
+  args: {
+    id: v.id("messages"),
+  },
+  handler: async (ctx, { id }) => {
+    const message = await ctx.db.get(id);
+    if (!message) {
+      throw new Error("Message not found");
+    }
+    const userId = await getAuthUserId(ctx);
+    if (userId !== message.userId) {
+      throw new Error("Can't delete");
+    }
+    await ctx.db.delete(id);
+  },
+});
