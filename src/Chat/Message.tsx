@@ -23,7 +23,7 @@ export function Message({
     try {
       await deleteMessage({ id });
     } catch (error) {
-      throw new Error("Can't delete");
+      throw error instanceof Error ? error : new Error("can't delete");
     }
   };
 
