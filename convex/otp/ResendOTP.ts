@@ -1,4 +1,4 @@
-import { Email } from "@convex-dev/auth/providers/Email";
+import Email  from "@convex-dev/auth/providers/resend";
 import { alphabet, generateRandomString } from "oslo/crypto";
 import { Resend as ResendAPI } from "resend";
 import { VerificationCodeEmail } from "./VerificationCodeEmail";
