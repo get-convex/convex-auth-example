@@ -11,3 +11,13 @@ choose one of these to kick start your project.
 npm install
 npm run dev
 ```
+
+### Special hints for Keycloak
+
+If you consider using Keycloak please add these ENV variables:
+
+```sh
+npx convex env set KEYCLOAK_ISSUER https://keycloak.example.com/realms/master
+npx convex env set KEYCLOAK_CLIENT_SECRET super_save_keycloak_secret
+npx convex env set KEYCLOAK_CLIENT_ID client.id
+```

@@ -1,6 +1,7 @@
 import { SignInWithApple } from "@/auth/oauth/SignInWithApple";
 import { SignInWithGitHub } from "@/auth/oauth/SignInWithGitHub";
 import { SignInWithGoogle } from "@/auth/oauth/SignInWithGoogle";
+import { SignInWithKeycloak } from "./oauth/SignInWithKeycloak";
 
 export function SignInWithOAuth() {
   return (
@@ -8,6 +9,7 @@ export function SignInWithOAuth() {
       <SignInWithGitHub />
       <SignInWithGoogle />
       <SignInWithApple />
+      <SignInWithKeycloak />
     </div>
   );
 }
